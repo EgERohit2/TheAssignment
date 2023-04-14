@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -24,7 +23,7 @@ import com.example.todo.entities.MethodEnum;
 import com.example.todo.repository.ErrorloggerRepository;
 
 @RestControllerAdvice
-@ControllerAdvice
+//@ControllerAdvice
 public class ValidationException {
 
 	@Autowired
@@ -57,12 +56,9 @@ public class ValidationException {
 
 	}
 
-	
-	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) 
-	{
+	public Map<String, String> handleMethodArgumentNotValid(MethodArgumentNotValidException ex) {
 		Map<String, String> errorMap = new HashMap<>();
 		System.out.println("hello1");
 		ex.getBindingResult().getFieldErrors().forEach(error -> {

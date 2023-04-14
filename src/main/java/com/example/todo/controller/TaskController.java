@@ -85,8 +85,9 @@ public class TaskController {
 		}
 	}
 
+	//14-04-2023(working) //11.45 am
 	@GetMapping("taskDto/data")
-	public TaskDto updateTaskById(@RequestParam(value = "id") int id) {
+	public TaskDto getTaskById(@RequestParam(value = "id") int id) {
 		TaskDto t = taskService.getTaskDtoById(id);
 		return t;
 	}
